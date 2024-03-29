@@ -15,8 +15,8 @@ function App() {
 
   console.log(cookies, "cookiescookies");
 
-  // const isAuthenticated = document.cookie.includes('token');
-  const isAuthenticated = true;
+  const isAuthenticated = document.cookie.includes("token");
+  // const isAuthenticated = false;
 
   // console.log(isAuthenticated, 'isAuthenticated');
 
@@ -26,7 +26,6 @@ function App() {
         <Routes>
           <Route path="/signup" element={<Signup />} />
           <Route path="/signin" element={<Signin />} />
-          {/* <Route path="/chat" element={<Chat />} /> */}
           <Route
             path="/chat"
             element={
@@ -35,9 +34,7 @@ function App() {
                 component={Chat}
               />
             }
-          >
-            {/* <SocketProvider /> */}
-          </Route>
+          ></Route>
           <Route path="/" element={<Navigate to="/signin" replace />} />
         </Routes>
       </BrowserRouter>

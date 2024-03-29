@@ -49,6 +49,7 @@ export const Auth = ({ type }) => {
               withCredentials: true,
             }
           );
+          console.log("response=>", response);
           if (response.status === 200) {
             console.log("Logged in successfully");
             if (type === "signup") {

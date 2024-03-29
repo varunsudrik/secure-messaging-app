@@ -28,7 +28,7 @@ async function produceMessageMQ(message, image = null) {
 }
 
 async function startRabbitConsumer() {
-  console.log("Consumer is running..");
+  console.log("Consumer is running");
   if (!channel) {
     await connectRabbitMQ();
   }

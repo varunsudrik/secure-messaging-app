@@ -20,7 +20,7 @@ const sub = new Redis({
 });
 
 function initSocketService() {
-  console.log("Init Socket Service...");
+  console.log("Socket service running");
   const io = new Server({
     cors: {
       allowedHeaders: ["*"],
@@ -30,7 +30,7 @@ function initSocketService() {
   sub.subscribe("MESSAGES");
 
   function initListeners() {
-    console.log("Init Socket Listeners...");
+    console.log("Socket Listening");
 
     io.on("connect", (socket) => {
       console.log(`New Socket Connected`, socket.id);

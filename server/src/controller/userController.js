@@ -8,7 +8,6 @@ const prisma = new PrismaClient();
 
 async function registerUser(req, res) {
   try {
-    // Validate request body
     const parsed = signUpSchema.safeParse(req.body);
     if (!parsed.success) {
       return res.status(StatusCodes.FORBIDDEN).json({
@@ -37,8 +36,8 @@ async function registerUser(req, res) {
     });
 
     res
-      .status(StatusCodes.CREATED)
-      .json({ message: "User registered successfully", user: newUser });
+      .status(StatusCodes.OK)
+      .json({ message: "User registered successfully" });
   } catch (error) {
     console.error("Error registering user:", error);
     res
@@ -83,7 +82,6 @@ const loginUser = async (req, res) => {
 
     res.cookie("token", token, {
       maxAge: 86400000,
-      httpOnly: true,
       sameSite: "strict",
     });
 
@@ -96,4 +94,8 @@ const loginUser = async (req, res) => {
   }
 };
 
-module.exports = { registerUser, loginUser };
+async function chatSection(req, res) {
+  res.status(StatusCodes.OK);
+}
+
+module.exports = { registerUser, loginUser, chatSection };

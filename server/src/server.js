@@ -21,14 +21,14 @@ app.use(express.urlencoded({ extended: true }));
 app.use(
   cors({
     credentials: true,
-    origin: "http://localhost:5173",
+    origin: process.env.React_URL,
   })
 );
 require("dotenv").config();
 app.use("/api/user", userRoute);
 
 app.get("/", (req, res) => {
-  res.send("");
+  res.send("hello ");
 });
 app.get("/health", (req, res) => {
   res.send("Server is running");

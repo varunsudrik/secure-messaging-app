@@ -1,10 +1,33 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { SocketProvider, useSocket } from "../context/SocketProvider";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import { get } from "../services/apiService";
 
 function Chat() {
   const { sendMessage, messages } = useSocket();
   const [message, setMessage] = useState("");
   const [image, setImage] = useState(null);
+  const navigate = useNavigate();
+
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     try {
+  //       const result = await get("/api/user/chat");
+  //       console.log(result, "ressssss");
+
+  //       if (result) {
+  //         //   setData(result.data);
+  //         //  console.log("success token");
+  //       }
+  //     } catch (error) {
+  //       //console.error("Error fetching data:", error);
+  //       navigate("/signin");
+  //     }
+  //   };
+
+  //   fetchData();
+  // }, []);
 
   const handleMessageChange = (e) => {
     setMessage(e.target.value);
