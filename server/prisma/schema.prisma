@@ -20,3 +20,12 @@ model Message {
 
   @@map("messages")
 }
+
+model User {
+  id       String @id @default(uuid())
+  username String @unique
+  email    String @unique
+  password String
+
+  @@map("users")
+}
